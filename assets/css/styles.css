@@ -48,11 +48,15 @@ header {
 
 }
 
-#starter-info {
+#quiz-box {
     width: 50%;
     padding: 40px;
     border: solid 4px var(--orange);
     margin: 40px;
+}
+
+#quiz-questions {
+    display: none;
 }
 
 #start {
