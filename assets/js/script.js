@@ -1,7 +1,32 @@
 // Variables related to elements in DOM
+var scoresButton = document.querySelector("#scores-button");
+var startButton = document.querySelector("#start-button");
+var submitButton = document.querySelector("#submit-button");
+var button1 = document.querySelector("#button-1");
+var button2 = document.querySelector("#button-2");
+var button3 = document.querySelector("#button-3");
+var button4 = document.querySelector("#button-4");
+
+var starterInfo = document.querySelector("#starter-info");
+var quizQuestions = document.querySelector("#quiz-questions");
+var endInfo = document.querySelector("#end-info");
+
+var questionText = document.querySelector("#question-text");
+var choice1 = document.querySelector("#choice-1");
+var choice2 = document.querySelector("#choice-2");
+var choice3 = document.querySelector("#choice-3");
+var choice4 = document.querySelector("#choice-4");
+
+var finalScore = document.querySelector("#final-score");
+var initials = document.querySelector("#initials");
+var timeLeft = document.querySelector("#time-left");
+
 
 
 // sound effects
+
+var soundCorrect = new Audio("./assets/sfx/correct3-95630.mp3");
+var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 
 // When the player presses High Scores button - the high scores are displayed underneath.
 
