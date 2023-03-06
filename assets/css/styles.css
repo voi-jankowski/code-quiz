@@ -55,16 +55,24 @@ header {
     margin: 40px;
 }
 
-#quiz-questions {
-    display: none;
+#quiz-box button {
+    background-color: var(--brown);
+    color: var(--grey);
 }
 
 #start {
-    background-color: var(--brown);
-    color: var(--grey);
-    width: 25%;
     float: right;
 }
+
+#choices li {
+    list-style-type: none;
+}
+
+#quiz-questions {
+    /* display: none; */
+}
+
+
 
 #timer {
     width: 25%;
