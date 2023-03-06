@@ -12,6 +12,7 @@ var quizQuestions = document.querySelector("#quiz-questions");
 var endInfo = document.querySelector("#end-info");
 
 var questionText = document.querySelector("#question-text");
+var possibleAnswers = document.querySelector("#choices");
 var choice1 = document.querySelector("#choice-1");
 var choice2 = document.querySelector("#choice-2");
 var choice3 = document.querySelector("#choice-3");
@@ -67,9 +68,26 @@ function nextQuestion() {
 
 
 // When the player presses one of the choices button: event key and compares with the answer.
-// if the choice is correct - next question
+function selectAnswer(event) {
+    var chosenButton = document.getElementById.event.target;
+        // if the choice is correct - next question
+    if (chosenButton === nextQ.answer) {
+        soundCorrect.play();
+        questionsLeft--;
+        nextQuestion();
+        // if the choice is incorrect - next question and timer -15sec
+    } else {
+        soundWrong.play();
+        questionsLeft--;
+        timerCount -= 15;
+        nextQuestion();
 
-// if the choice is incorrect - next question and timer -15sec
+    }
+}
+
+
+
+
 
 // TIMER - is set to run for 75sec
 var timerCount = 75;
@@ -98,9 +116,14 @@ function startTimer() {
 
 // GAME OVER:
 // Display Game Over message 
-// and info about the scorewith text-box to record player's name
-function gameOver() {
 
+function gameOver() {
+    starterInfo.setAttribute("style", "display: none");
+    quizQuestions.setAttribute("style", "display: none");
+    endInfo.setAttribute("style", "display: block");
+
+    // and info about the scorewith text-box to record player's name
+    finalScore.textContent = timerCount;
 }
 
 // When the player presses submit button:
@@ -109,4 +132,7 @@ function gameOver() {
 // Reset the quiz-box to starter-info.
 
 
-startButton.addEventListener("click", )
+startButton.addEventListener("click", init);
+
+possibleAnswers.addEventListener("click", selectAnswer(event));
+
