@@ -31,6 +31,15 @@ h3 {
     display: block;
     
 }
+
+.main button {
+    background-color: var(--brown);
+    color: var(--grey);
+}
+
+.main button:hover {
+    background-color: rgb(255, 115, 21);
+}
 .wrapper {
     display: flex;
     width: 80%;
@@ -55,10 +64,6 @@ header {
     margin: 40px;
 }
 
-#quiz-box button {
-    background-color: var(--brown);
-    color: var(--grey);
-}
 
 #start {
     float: right;
