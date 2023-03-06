@@ -28,7 +28,11 @@ var timeLeft = document.querySelector("#time-left");
 var soundCorrect = new Audio("./assets/sfx/correct3-95630.mp3");
 var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 
+
+
 // When the player presses High Scores button - the high scores are displayed underneath.
+
+var questionsLeft = 5;
 
 // When the player presses start button the quiz starts 
 // and the first question is displayed 
@@ -38,16 +42,42 @@ var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 
 // When the player presses one of the choices button: event key and compares with the answer.
 // if the choice is correct - next question
+function nextQuestion() {
+
+}
 // if the choice is incorrect - next question and timer -15sec
 
 // TIMER - is set to run for 75sec
-// When the questions are answered the timer stops and Game Over
-// When the timer finishes - Game Over
+var timerCount = 75;
+
 // The time remaining in the timer becomes a high score
+function startTimer() {
+    var timer = setInterval(function() {
+        timerCount--;
+        timeLeft.textContent = timerCount;
+
+        // When the questions are answered the timer stops and Game Over
+        if(timerCount > 0 && questionsLeft > 0) {
+            nextQuestion();
+        } else {
+            gameOver();
+        }
+        // When the timer finishes - Game Over
+        if(timerCount <= 0) {
+            gameOver();
+            timerCount = 0;
+        }
+       
+    }, 1000);
+
+}
 
 // GAME OVER:
 // Display Game Over message 
 // and info about the scorewith text-box to record player's name
+function gameOver() {
+
+}
 
 // When the player presses submit button:
 // Set high scores and save them in the local storage with the player's name
