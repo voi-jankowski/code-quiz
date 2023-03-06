@@ -8,9 +8,10 @@
 
 body {
     background-color: var(--grey);
-    line-height: 2;
+    line-height: 1.5;
     color: var(--black);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 900;
 }
 
 
@@ -20,7 +21,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 h3 {
@@ -35,6 +36,7 @@ h3 {
 .main button {
     background-color: var(--brown);
     color: var(--grey);
+    font-size: 1.5em;
 }
 
 .main button:hover {
@@ -42,7 +44,7 @@ h3 {
 }
 .wrapper {
     display: flex;
-    width: 80%;
+    width: 90%;
     margin: auto;
     justify-content: space-between;
 }
