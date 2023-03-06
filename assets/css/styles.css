@@ -1,0 +1,64 @@
+/* Coulor palette sourced from https://colorhunt.co/palette/f4f4f4ff73153a3535232020 */
+:root {
+    --grey: rgb(244, 244, 244);
+    --orange: rgb(255, 115, 21);
+    --brown: rgb(58, 53, 53);
+    --black: rgb(35, 32, 32);
+}
+
+body {
+    background-color: var(--grey);
+    line-height: 2;
+    color: var(--black);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+.main {
+    display: block;
+    
+}
+.wrapper {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+header {
+    margin: 40px;
+}
+
+#scores {
+    margin: 40px;
+    float: inline-end;
+
+}
+
+#starter-info {
+    width: 50%;
+    padding: 40px;
+    border: solid 4px var(--orange);
+    margin: 40px;
+}
+
+#timer {
+    width: 25%;
+    padding: 40px;
+    border: solid 4px var(--orange);
+    margin: 40px;
+}
+
