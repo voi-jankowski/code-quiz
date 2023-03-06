@@ -55,6 +55,13 @@ header {
     margin: 40px;
 }
 
+#start {
+    background-color: var(--brown);
+    color: var(--grey);
+    width: 25%;
+    float: right;
+}
+
 #timer {
     width: 25%;
     padding: 40px;
