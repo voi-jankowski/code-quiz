@@ -34,23 +34,37 @@ var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 
 var questionsLeft = 5;
 
+
 // When the player presses start button the quiz starts 
-// and the first question is displayed 
+function init() {
+    // the question is displayed
+    nextQuestion();
+    // and the timer starts running
+    startTimer();
+    // disable high scores button
+    scoresButton.disabled = true;
+}
+
+
+
 function nextQuestion() {
+    // and the starter-info is hidden from view
     starterInfo.setAttribute("style", "display: none");
     quizQuestions.setAttribute("style", "display: block");
     endInfo.setAttribute("style", "display: none");
 
+    // and the first question is displayed 
     var nextQ = questions[questionsLeft - 1];
     questionText.textContent = nextQ.question;
     choice1.textContent = nextQ.choices[0];
     choice2.textContent = nextQ.choices[1];
     choice3.textContent = nextQ.choices[2];
     choice4.textContent = nextQ.choices[3];
+
 }
-// and the starter-info is hidden from view
-// and the timer starts running
-// disable high scores button
+
+
+
 
 // When the player presses one of the choices button: event key and compares with the answer.
 // if the choice is correct - next question
@@ -95,4 +109,4 @@ function gameOver() {
 // Reset the quiz-box to starter-info.
 
 
-nextQuestion();
+startButton.addEventListener("click", )
