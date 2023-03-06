@@ -36,15 +36,25 @@ var questionsLeft = 5;
 
 // When the player presses start button the quiz starts 
 // and the first question is displayed 
+function nextQuestion() {
+    starterInfo.setAttribute("style", "display: none");
+    quizQuestions.setAttribute("style", "display: block");
+    endInfo.setAttribute("style", "display: none");
+
+    var nextQ = questions[questionsLeft - 1];
+    questionText.textContent = nextQ.question;
+    choice1.textContent = nextQ.choices[0];
+    choice2.textContent = nextQ.choices[1];
+    choice3.textContent = nextQ.choices[2];
+    choice4.textContent = nextQ.choices[3];
+}
 // and the starter-info is hidden from view
 // and the timer starts running
 // disable high scores button
 
 // When the player presses one of the choices button: event key and compares with the answer.
 // if the choice is correct - next question
-function nextQuestion() {
 
-}
 // if the choice is incorrect - next question and timer -15sec
 
 // TIMER - is set to run for 75sec
@@ -85,4 +95,4 @@ function gameOver() {
 // Reset the quiz-box to starter-info.
 
 
-
+nextQuestion();
