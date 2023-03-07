@@ -1,3 +1,40 @@
+//  Questions
+var questions = [
+    {
+      question: 'Commonly used data types DO NOT include:',
+      choices: ['strings', 'booleans', 'alerts', 'numbers'],
+      answer: 'alerts',
+    },
+    {
+      question: 'The condition in an if / else statement is enclosed within ____.',
+      choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
+      answer: 'parentheses',
+    },
+    {
+      question: 'Arrays in JavaScript can be used to store ____.',
+      choices: [
+        'numbers and strings',
+        'other arrays',
+        'booleans',
+        'all of the above',
+      ],
+      answer: 'all of the above',
+    },
+    {
+      question:
+        'String values must be enclosed within ____ when being assigned to variables.',
+      choices: ['commas', 'curly brackets', 'quotes', 'parentheses'],
+      answer: 'quotes',
+    },
+    {
+      question:
+        'A very useful tool used during development and debugging for printing content to the debugger is:',
+      choices: ['JavaScript', 'terminal / bash', 'for loops', 'console.log'],
+      answer: 'console.log',
+    },
+  ];
+
+
 // Variables related to elements in DOM
 var scoresButton = document.querySelector("#scores-button");
 var startButton = document.querySelector("#start-button");
@@ -32,12 +69,13 @@ var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 var questionsLeft = questions.length;
 var nextQ = questions[questionsLeft - 1];
 console.log(questionsLeft);
+console.log(nextQ);
 
-// TIMER - is set to run for 75sec
+// TIMER - is set to allow 15 sec for each question.
 var timerCount = questions.length *15;
 console.log(timerCount);
 
-var numberOfScores = 10;
+var numberOfScores;
 var highScores = [];
 
 scoresButton.disabled = false;
@@ -62,15 +100,15 @@ function nextQuestion() {
     starterInfo.setAttribute("style", "display: none");
     quizQuestions.setAttribute("style", "display: block");
     endInfo.setAttribute("style", "display: none");
-
+    questionsLeft--;
     // and the first question is displayed 
+    var nextQ = questions[questionsLeft];
     
     questionText.textContent = nextQ.question;
     choice1.textContent = nextQ.choices[0];
     choice2.textContent = nextQ.choices[1];
     choice3.textContent = nextQ.choices[2];
     choice4.textContent = nextQ.choices[3];
-
     
 
 }
@@ -78,27 +116,29 @@ function nextQuestion() {
 
 // When the player presses one of the choices button: event key and compares with the answer.
 function selectAnswer(event) {
-    var chosenButton = event.target;
-    var chosenAnswer = event.target.querySelector(".button-text");
-    console.log(chosenAnswer);
+    var chosenAnswer = event.target.querySelector("span.button-text");
+   if(chosenAnswer){
+    var text = chosenAnswer.textContent;
+    console.log(text)
+
         // if the choice is correct - next question
     if (chosenAnswer === nextQ.answer) {
         soundCorrect.play();
         // if the choice is incorrect - next question and timer -15sec
-    } else {
+    } 
+    if (chosenAnswer != nextQ.answer){
         soundWrong.play();
         timerCount -= 15;
         timeLeft.textContent = timerCount;
     }
-
-    questionsLeft--;
+   }
     // When the questions are answered the timer stops and Game Over
-    if(questionsLeft = 0) {
+    if(questionsLeft == 0) {
         gameOver();
-    } else {
+    }  
+    if(questionsLeft != 0){
         nextQuestion();
     }
-    
 }
 
 
@@ -189,3 +229,5 @@ scoresButton.addEventListener("click", function(){
         tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
     }
 })
+
+
