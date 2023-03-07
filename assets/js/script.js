@@ -127,14 +127,15 @@ function selectAnswer(event) {
 
     // if the choice is correct - next question
     if (chosenAnswer === nextQ.answer) {
-
         soundCorrect.play();
-        // if the choice is incorrect - next question and timer -15sec
     } 
+    // if the choice is incorrect - next question and timer -15sec
     if (chosenAnswer != nextQ.answer){
         soundWrong.play();
-        
         timerCount -= 15;
+        if (timerCount < 0){
+          timerCount = 0;
+        }
         timeLeft.textContent = timerCount;
     }
   
@@ -158,8 +159,11 @@ function startTimer() {
 
          
         // When the timer finishes - Game Over
-        if(timerCount = 0) {
+        if(timerCount <= 0) {
+            
             clearInterval(timer);
+            timerCount = 0;
+            timeLeft.textContent = timerCount;
             gameOver();
         }
        
@@ -178,7 +182,7 @@ function gameOver() {
     // and info about the scorewith text-box to record player's name
     finalScore.textContent = timerCount;
 
-   
+    
 }
 
 // The elements of solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
