@@ -2,10 +2,7 @@
 var scoresButton = document.querySelector("#scores-button");
 var startButton = document.querySelector("#start-button");
 var submitButton = document.querySelector("#submit-button");
-var button1 = document.querySelector("#button-1");
-var button2 = document.querySelector("#button-2");
-var button3 = document.querySelector("#button-3");
-var button4 = document.querySelector("#button-4");
+
 
 var starterInfo = document.querySelector("#starter-info");
 var quizQuestions = document.querySelector("#quiz-questions");
@@ -30,10 +27,19 @@ var soundCorrect = new Audio("./assets/sfx/correct3-95630.mp3");
 var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 
 
-
+// The solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
 // When the player presses High Scores button - the high scores are displayed underneath.
+var numberOfScores = 10;
+var highScores;
+var lowestScore = highScores[numberOfScores - 1]?.score ?? 0;
+scoresButton.disabled = false;
 
-var questionsLeft = 5;
+scoresButton.addEventListener("click", function(){
+    var highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
+
+
+    for ()
+})
 
 
 // When the player presses start button the quiz starts 
@@ -55,23 +61,28 @@ function nextQuestion() {
     endInfo.setAttribute("style", "display: none");
 
     // and the first question is displayed 
-    var nextQ = questions[questionsLeft - 1];
+    
     questionText.textContent = nextQ.question;
     choice1.textContent = nextQ.choices[0];
     choice2.textContent = nextQ.choices[1];
     choice3.textContent = nextQ.choices[2];
     choice4.textContent = nextQ.choices[3];
 
+    possibleAnswers.addEventListener("click", selectAnswer);
+
 }
 
 
-
+var questionsLeft = 5;
+var nextQ = questions[questionsLeft - 1];
 
 // When the player presses one of the choices button: event key and compares with the answer.
 function selectAnswer(event) {
-    var chosenButton = document.getElementById.event.target;
+    var chosenButton = event.target;
+    var chosenAnswer = document.querySelector(chosenButton).children[0];
+    console.log(chosenAnswer);
         // if the choice is correct - next question
-    if (chosenButton === nextQ.answer) {
+    if (chosenAnswer === nextQ.answer) {
         soundCorrect.play();
         questionsLeft--;
         nextQuestion();
@@ -127,12 +138,42 @@ function gameOver() {
 }
 
 // When the player presses submit button:
-// Set high scores and save them in the local storage with the player's name
-// Enable High Scores Button
-// Reset the quiz-box to starter-info.
+submitButton.addEventListener("click", saveScore());
+
+function saveScore(event) {
+    event.preventDefault();
+    // Set high scores and save them in the local storage with the player's name
+    var personalScore = {
+        initials: initials.value.trim(),
+        score: finalScore
+    }
+     // 1. Add to list
+    highScores.push(personalScore);
+
+  // 2. Sort the list
+    highScores.sort((a, b) => b.score - a.score);
+  
+  // 3. Select new list
+   highScores.splice(NO_OF_HIGH_SCORES);
+  
+  // 4. Save to local storage
+   localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+};
+
+    localStorage.setItem("highScores", JSON.stringify(personalScore));
+
+    // Enable High Scores Button
+    scoresButton.disabled = false;
+
+    // Reset the quiz-box to starter-info.
+    location.reload();
+}
+     
+
+
 
 
 startButton.addEventListener("click", init);
 
-possibleAnswers.addEventListener("click", selectAnswer(event));
+
 
