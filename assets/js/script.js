@@ -43,7 +43,6 @@ var scoresButton = document.querySelector("#scores-button");
 var startButton = document.querySelector("#start-button");
 var submitButton = document.querySelector("#submit-button");
 
-
 var starterInfo = document.querySelector("#starter-info");
 var quizQuestions = document.querySelector("#quiz-questions");
 var endInfo = document.querySelector("#end-info");
@@ -75,6 +74,7 @@ console.log(questionsLeft);
 console.log(nextQ);
 
 // TIMER - is set to allow 15 sec for each question.
+var timer;
 var timerCount = questions.length *15;
 console.log(timerCount);
 
@@ -104,9 +104,9 @@ function nextQuestion() {
     quizQuestions.setAttribute("style", "display: block");
     endInfo.setAttribute("style", "display: none");
     questionsLeft--;
+    nextQ = questions[questionsLeft];
     // and the first question is displayed 
-    var nextQ = questions[questionsLeft];
-    
+    console.log(nextQ.answer);
     questionText.textContent = nextQ.question;
     choice1.textContent = nextQ.choices[0];
     choice2.textContent = nextQ.choices[1];
@@ -133,15 +133,18 @@ function selectAnswer(event) {
     } 
     if (chosenAnswer != nextQ.answer){
         soundWrong.play();
+        
         timerCount -= 15;
         timeLeft.textContent = timerCount;
     }
   
     // When the questions are answered the timer stops and Game Over
     if(questionsLeft == 0) {
+        clearInterval(timer);
         gameOver();
     }  
     if(questionsLeft != 0){
+       
         nextQuestion();
     }
 }
@@ -149,16 +152,15 @@ function selectAnswer(event) {
 
 // The time remaining in the timer becomes a high score
 function startTimer() {
-    var timer = setInterval(function() {
+    timer = setInterval(function() {
         timerCount--;
         timeLeft.textContent = timerCount;
 
          
         // When the timer finishes - Game Over
-        if(timerCount <= 0) {
+        if(timerCount = 0) {
             clearInterval(timer);
             gameOver();
-            timerCount = 0;
         }
        
     }, 1000);
@@ -220,7 +222,8 @@ startButton.addEventListener("click", init);
 possibleAnswers.addEventListener("click",selectAnswer);
 
 // When the player presses submit button:
-submitButton.addEventListener("click", saveScore());
+submitButton.addEventListener("click", saveScore);
+
 
 // When the player presses High Scores button - the high scores are displayed underneath.
 scoresButton.addEventListener("click", function(){

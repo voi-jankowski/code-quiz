@@ -87,6 +87,10 @@ header {
     display: none;
 }
 
+#retake-button {
+    float: right;
+}
+
 
 #timer {
     width: 25%;
