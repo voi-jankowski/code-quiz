@@ -42,19 +42,7 @@ var highScores = [];
 
 scoresButton.disabled = false;
 
-// When the player presses High Scores button - the high scores are displayed underneath.
 
-scoresButton.addEventListener("click", function(){
-    highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
-
-    highScores.sort((a, b) => b.score - a.score);
-    
-    for(var i =0; i < highScores.length; i++) {
-        var tag = document.createElement("li");
-        hightScoreList.appendChild(tag);
-        tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
-    }
-})
 
 
 // When the player presses start button the quiz starts 
@@ -83,7 +71,7 @@ function nextQuestion() {
     choice3.textContent = nextQ.choices[2];
     choice4.textContent = nextQ.choices[3];
 
-    possibleAnswers.addEventListener("click",selectAnswer);
+    
 
 }
 
@@ -143,8 +131,7 @@ function gameOver() {
     // and info about the scorewith text-box to record player's name
     finalScore.textContent = timerCount;
 
-    // When the player presses submit button:
-    submitButton.addEventListener("click", saveScore());
+   
 }
 
 // The elements of solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
@@ -181,8 +168,24 @@ function saveScore(event) {
 
 
 
-
+// When user presses start button:
 startButton.addEventListener("click", init);
 
+// When user presses one of the answer buttons:
+possibleAnswers.addEventListener("click",selectAnswer);
 
+// When the player presses submit button:
+submitButton.addEventListener("click", saveScore());
 
+// When the player presses High Scores button - the high scores are displayed underneath.
+scoresButton.addEventListener("click", function(){
+    highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
+
+    highScores.sort((a, b) => b.score - a.score);
+    
+    for(var i =0; i < highScores.length; i++) {
+        var tag = document.createElement("li");
+        hightScoreList.appendChild(tag);
+        tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
+    }
+})
