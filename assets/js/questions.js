@@ -33,4 +33,3 @@ var questions = [
       answer: 'console.log',
     },
   ];
-  console.log(questions);
