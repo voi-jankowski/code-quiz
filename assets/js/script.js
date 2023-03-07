@@ -122,7 +122,7 @@ function selectAnswer(event) {
     var chosenButton = event.target;
     console.log(chosenButton);
 
-    var chosenAnswer = chosenButton.value;
+    var chosenAnswer = chosenButton.textContent;
     console.log(chosenAnswer);
 
     // if the choice is correct - next question
