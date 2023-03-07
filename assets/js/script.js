@@ -1,4 +1,7 @@
 //  Questions
+var question;
+var choices;
+var answer;
 var questions = [
     {
       question: 'Commonly used data types DO NOT include:',
@@ -116,13 +119,15 @@ function nextQuestion() {
 
 // When the player presses one of the choices button: event key and compares with the answer.
 function selectAnswer(event) {
-    var chosenAnswer = event.target.querySelector("span.button-text");
-   if(chosenAnswer){
-    var text = chosenAnswer.textContent;
-    console.log(text)
+    var chosenButton = event.target;
+    console.log(chosenButton);
 
-        // if the choice is correct - next question
+    var chosenAnswer = chosenButton.value;
+    console.log(chosenAnswer);
+
+    // if the choice is correct - next question
     if (chosenAnswer === nextQ.answer) {
+
         soundCorrect.play();
         // if the choice is incorrect - next question and timer -15sec
     } 
@@ -131,7 +136,7 @@ function selectAnswer(event) {
         timerCount -= 15;
         timeLeft.textContent = timerCount;
     }
-   }
+  
     // When the questions are answered the timer stops and Game Over
     if(questionsLeft == 0) {
         gameOver();
