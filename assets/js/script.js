@@ -14,7 +14,7 @@ var questions = [
       answer: "properties",
     },
     {
-      question: "Which part of HTML METADATA is stored in?",
+      question: "Which part of HTML is METADATA stored in?",
       choices: [
         "<head> element",
         "<body> element",
@@ -182,6 +182,9 @@ function gameOver() {
 
     // and info about the scorewith text-box to record player's name
     finalScore.textContent = timerCount;
+    
+    // Enabling the Submit button to record the score.
+    submitButton.disabled = false;
 
 }
 
@@ -212,6 +215,9 @@ function saveScore(event) {
 
     // Enabling High Scores Button
     scoresButton.disabled = false;
+
+    // Once the score is submitted the button gets disabled to prevent saving the score twice
+    submitButton.disabled = true;
 
 }
 
