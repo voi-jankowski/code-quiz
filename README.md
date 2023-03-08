@@ -1,8 +1,3 @@
-Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=95630">Pixabay</a>
-
-Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=126515">Universfield</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=126515">Pixabay</a>
-
-// Some elements of solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
 
 # Coding Quiz
 
@@ -20,26 +15,30 @@ N/A
 
 ## Usage
 
-When you open the page you can find the box with the field for your secure password to be displayed. Below there is Generate Password button along the Copy button. 
-Press Generate Password button and series of questions will be displayed for you to set the criteria for your password starting with its length.
+When you open the page you can see the instructions on how to play and the timer on the right.
 
-![Screenshot of the first prompt](./assets/images/generator-1%20(2).png)
+![Opening of the page.](./assets/images/quiz-1.png)
 
-Next you are presented with questions about different character types. When you select one of the character types your password will contain one or more characters of the type to meet your criteria.
+Once you press Start the Quiz button the timer starts running and you are presented with the questions with multiple answers. Press the correct answer and you can hear 'Right' sound. If you chose incorrectly 'Wrong' sound could be heard and you are deducted 15 sec from your time.
 
-![Screenshot of the Uppercase selection box.](./assets/images/generator-2%20(2).png)
+![Quiz in the game mode.](./assets/images/quiz-2.png)
 
-Please, select at least one group or the password won't get generated and you will be asked to make your selection again.
+After finishing you can enter your initials to save the score. Press High Scores button on the right to see the list of high scores. The button Clear Scores deletes those past scores.
 
-![Screenshot of wrong selection alert.](./assets/images/generator-3%20(2).png)
+![Page with the quiz finished.](./assets/images/quiz-3.png)
 
-Once the password is generated and displayed you can use Copy button to add it to your clipboard.
-
-![Screenshot of the generated password.](./assets/images/generator-4%20(2).png)
 
 ## Credits
 
-The styling of the page was provided by © 2023 edX Boot Camps LLC.
+'Right' Sound Effect from Pixabay: https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=95630"
+
+'Wrong' Sound Effect by Universfield: https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=126515 
+from Pixabay: https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=126515
+
+Some elements of solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
+
+Coulor palette sourced from https://colorhunt.co/palette/f4f4f4ff73153a3535232020
+
 
 ## License
 
