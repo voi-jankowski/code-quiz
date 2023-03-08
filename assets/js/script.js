@@ -43,6 +43,7 @@ var questions = [
 var scoresButton = document.querySelector("#scores-button");
 var startButton = document.querySelector("#start-button");
 var submitButton = document.querySelector("#submit-button");
+var clearButton = document.querySelector("#clear-scores");
 
 var starterInfo = document.querySelector("#starter-info");
 var quizQuestions = document.querySelector("#quiz-questions");
@@ -58,7 +59,7 @@ var choice4 = document.querySelector("#choice-4");
 var finalScore = document.querySelector("#final-score");
 var initials = document.querySelector("#initials");
 var timeLeft = document.querySelector("#time-left");
-var highScoresList = document.getElementById("highScores")
+var highScoresList = document.getElementById("high-scores")
 
 // sound effects
 
@@ -229,6 +230,13 @@ function getHighScores () {
     }
 }
 
+function clearScores() {
+    // Removing saved scores from the local storage
+    window.localStorage.removeItem("highScores");
+    // And reloading the page;
+    window.location.reload();
+}
+
 
 // When user presses start button:
 startButton.addEventListener("click", init);
@@ -243,4 +251,5 @@ submitButton.addEventListener("click", saveScore);
 // When the player presses High Scores button:
 scoresButton.addEventListener("click", getHighScores);
 
-
+// When the player presses Clear Scores button:
+clearButton.addEventListener("click", clearScores);
