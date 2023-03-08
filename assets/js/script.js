@@ -4,36 +4,40 @@ var choices;
 var answer;
 var questions = [
     {
-      question: 'Commonly used data types DO NOT include:',
-      choices: ['strings', 'booleans', 'alerts', 'numbers'],
-      answer: 'alerts',
+      question: "What's the most outer element in CSS Box Model?",
+      choices: ["content", "margin", "border", "padding"],
+      answer: "margin",
     },
     {
-      question: 'The condition in an if / else statement is enclosed within ____.',
-      choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
-      answer: 'parentheses',
+      question: "In JAvaScript OBJECTS store collections of:",
+      choices: ["events", "alerts", "comments", "properties"],
+      answer: "properties",
     },
     {
-      question: 'Arrays in JavaScript can be used to store ____.',
+      question: "Which part of HTML METADATA is stored in?",
       choices: [
-        'numbers and strings',
-        'other arrays',
-        'booleans',
-        'all of the above',
+        "<head> element",
+        "<body> element",
+        "<footer> element",
+        "<div> element",
       ],
-      answer: 'all of the above',
+      answer: "<head> element",
     },
     {
       question:
-        'String values must be enclosed within ____ when being assigned to variables.',
-      choices: ['commas', 'curly brackets', 'quotes', 'parentheses'],
-      answer: 'quotes',
+        "Which statement about JavaScript is correct?",
+      choices: [
+        "Operators are mathematical symbols.", 
+        "JavaScript is case sensitive.", 
+        "Functions can be reused.", 
+        "All of the above."],
+      answer: "All of the above.",
     },
     {
       question:
-        'A very useful tool used during development and debugging for printing content to the debugger is:',
-      choices: ['JavaScript', 'terminal / bash', 'for loops', 'console.log'],
-      answer: 'console.log',
+        "Period symbol '.' preceding a CSS selector means that the selector is:",
+      choices: ["a class", "a global selector", "an id", "not valid"],
+      answer: "a class",
     },
   ];
 
