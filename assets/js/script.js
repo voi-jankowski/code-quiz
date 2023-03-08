@@ -57,7 +57,7 @@ var choice4 = document.querySelector("#choice-4");
 var finalScore = document.querySelector("#final-score");
 var initials = document.querySelector("#initials");
 var timeLeft = document.querySelector("#time-left");
-var hightScoreList = document.getElementById("highScores")
+var highScoresList = document.getElementById("highScores")
 
 
 
@@ -81,9 +81,9 @@ console.log(timerCount);
 var numberOfScores;
 var highScores = [];
 
-scoresButton.disabled = false;
 
-
+ // Enable High Scores Button
+ scoresButton.disabled = false;
 
 
 // When the player presses start button the quiz starts 
@@ -172,7 +172,7 @@ function startTimer() {
 }
 
 // GAME OVER:
-// Display Game Over message 
+// Display Game Over message
 
 function gameOver() {
     starterInfo.setAttribute("style", "display: none");
@@ -191,15 +191,17 @@ function saveScore(event) {
     
     // Fill the array highScores with the previous scores
 
-    var previousScores = JSON.parse(localStorage.getItem("highScores"));
-    if (previousScores !== null) {
-        highScores.push(previousScores)
-    };
+    var highScores = JSON.parse(window.localStorage.getItem("highScores")) ?? [];
+    
+    if (initials === "") {
+      alert("You have to enter at least one letter for your initial!"); 
+      return
+    }
    
     // Set high scores and save them in the local storage with the player's name
     var personalScore = {
+        score: timerCount,
         initials: initials.value.trim(),
-        score: finalScore,
     };
 
      // Add to list
@@ -207,16 +209,23 @@ function saveScore(event) {
 
     // Save to local storage
 
-    localStorage.setItem("highScores", JSON.stringify(highScores));
+    window.localStorage.setItem("highScores", JSON.stringify(highScores));
 
     // Enable High Scores Button
     scoresButton.disabled = false;
 
-    // Reset the quiz-box to starter-info.
-    // location.reload();
 }
      
+function getHighScores () {
+  highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
 
+  for(var i =0; i < highScores.length; i++) {
+    
+    var tag = document.createElement("li");
+    highScoresList.appendChild(tag);
+    tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
+}
+}
 
 
 // When user presses start button:
@@ -230,16 +239,6 @@ submitButton.addEventListener("click", saveScore);
 
 
 // When the player presses High Scores button - the high scores are displayed underneath.
-scoresButton.addEventListener("click", function(){
-    highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
-
-    highScores.sort((a, b) => b.score - a.score);
-    
-    for(var i =0; i < highScores.length; i++) {
-        var tag = document.createElement("li");
-        hightScoreList.appendChild(tag);
-        tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
-    }
-})
+scoresButton.addEventListener("click", getHighScores);
 
 
