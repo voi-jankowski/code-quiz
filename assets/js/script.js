@@ -1,4 +1,4 @@
-//  Questions
+//  QUESTIONS
 var question;
 var choices;
 var answer;
@@ -37,6 +37,7 @@ var questions = [
     },
   ];
 
+// VARIABLES
 
 // Variables related to elements in DOM
 var scoresButton = document.querySelector("#scores-button");
@@ -59,8 +60,6 @@ var initials = document.querySelector("#initials");
 var timeLeft = document.querySelector("#time-left");
 var highScoresList = document.getElementById("highScores")
 
-
-
 // sound effects
 
 var soundCorrect = new Audio("./assets/sfx/correct3-95630.mp3");
@@ -70,21 +69,17 @@ var soundWrong = new Audio("./assets/sfx/wrong-answer-126515.mp3");
 
 var questionsLeft = questions.length;
 var nextQ = questions[questionsLeft - 1];
-console.log(questionsLeft);
-console.log(nextQ);
-
-// TIMER - is set to allow 15 sec for each question.
-var timer;
-var timerCount = questions.length *15;
-console.log(timerCount);
-
 var numberOfScores;
 var highScores = [];
 
+// timer related - is set to allow 15 sec for each question.
+var timer;
+var timerCount = questions.length *15;
 
- // Enable High Scores Button
- scoresButton.disabled = false;
+// Enable High Scores Button
+scoresButton.disabled = false;
 
+// INITIAL FUNCTIONS
 
 // When the player presses start button the quiz starts 
 function init() {
@@ -116,6 +111,7 @@ function nextQuestion() {
 
 }
 
+// QUIZ LOGIC FUNTIONS
 
 // When the player presses one of the choices button: event key and compares with the answer.
 function selectAnswer(event) {
@@ -172,9 +168,9 @@ function startTimer() {
 }
 
 // GAME OVER:
-// Display Game Over message
 
 function gameOver() {
+    // Display Game Over message
     starterInfo.setAttribute("style", "display: none");
     quizQuestions.setAttribute("style", "display: none");
     endInfo.setAttribute("style", "display: block");
@@ -182,15 +178,14 @@ function gameOver() {
     // and info about the scorewith text-box to record player's name
     finalScore.textContent = timerCount;
 
-    
 }
 
-// The elements of solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
+// HIGH SCORES RELATED FUNTIONS
+// Some elements of solution for recording high scores sourced from https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
 
 function saveScore(event) {
     
-    // Fill the array highScores with the previous scores
-
+    // Filling the array highScores with the previous scores or setting it as an empty array if there was no previous scores saved.
     var highScores = JSON.parse(window.localStorage.getItem("highScores")) ?? [];
     
     if (initials === "") {
@@ -198,33 +193,40 @@ function saveScore(event) {
       return
     }
    
-    // Set high scores and save them in the local storage with the player's name
+    // Seting high scores and players initials in an object;
     var personalScore = {
         score: timerCount,
         initials: initials.value.trim(),
     };
 
-     // Add to list
+     // Adding the object to the scores list
     highScores.push(personalScore);
 
-    // Save to local storage
-
+    // Saving to the local storage
     window.localStorage.setItem("highScores", JSON.stringify(highScores));
 
-    // Enable High Scores Button
+    // Enabling High Scores Button
     scoresButton.disabled = false;
 
 }
-     
-function getHighScores () {
-  highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
 
-  for(var i =0; i < highScores.length; i++) {
+function getHighScores () {
+    // The scores are retrieved from the local storage setting it as an empty array if there was no previous scores saved.
+    highScores = JSON.parse(localStorage.getItem("highScores")) ?? [];
     
-    var tag = document.createElement("li");
-    highScoresList.appendChild(tag);
-    tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
-}
+    // Terminate the function of the array is empty.
+    if (highScores.length === 0){
+      return
+    }
+    
+    //  the high scores are displayed underneath is a form of an unordered list.
+    for(var i =0; i < highScores.length; i++) {
+      
+      var tag = document.createElement("li");
+      highScoresList.appendChild(tag);
+      tag.textContent = "Player: " + highScores[i].initials + " - " + highScores[i].score;
+
+    }
 }
 
 
@@ -238,7 +240,7 @@ possibleAnswers.addEventListener("click",selectAnswer);
 submitButton.addEventListener("click", saveScore);
 
 
-// When the player presses High Scores button - the high scores are displayed underneath.
+// When the player presses High Scores button:
 scoresButton.addEventListener("click", getHighScores);
 
 
